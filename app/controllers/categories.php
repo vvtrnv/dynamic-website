@@ -1,6 +1,6 @@
 <?php
 
-include SITE_ROOT . '/app/database/db.php"';
+include SITE_ROOT . '/app/database/db.php';
 
 $msg = '';
 
@@ -39,7 +39,6 @@ else {
 	$name = '';
 	$description = '';
 }
-
 
 function getAllCategories() {
 	return selectAll('categories');

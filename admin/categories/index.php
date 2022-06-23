@@ -22,6 +22,7 @@ include "../../app/controllers/categories.php";
 
 <?php
 include "../../app/include/header-admin.php";
+include "../checkUser.php";
 ?>
 
 <div class="container">
