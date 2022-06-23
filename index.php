@@ -1,6 +1,6 @@
 <?php
 include "path.php";
-include "app/database/db.php";
+include "app/controllers/categories.php";
 ?>
 <head>
   <meta charset="utf-8">
@@ -148,11 +148,9 @@ include("app/include/header.php");
       <div class="section topics">
         <h3>Категории</h3>
         <ul>
-          <li><a href="#">Программирование</a></li>
-          <li><a href="#">Дизайн</a></li>
-          <li><a href="#">Мотивация</a></li>
-          <li><a href="#">Визуализация</a></li>
-          <li><a href="#">Кейсы</a></li>
+            <?php foreach (getAllCategories() as $key => $category): ?>
+              <li><a href="#"><?=$category['name'];?></a></li>
+			<?php endforeach; ?>
         </ul>
       </div>
 
