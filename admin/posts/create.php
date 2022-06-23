@@ -1,6 +1,6 @@
 <?php
-session_start();
 include "../../path.php";
+include "../../app/controllers/posts.php";
 ?>
 
 <!doctype html>
@@ -42,24 +42,27 @@ include "../../app/include/header-admin.php";
       <div class="row add-post">
         <form action="create.php" method="post">
           <div class="col mb-4">
-            <input type="text" class="form-control" placeholder="title" aria-label="Название статьи">
+            <input value="<?=$title?>" name="title" type="text" class="form-control" placeholder="title" aria-label="Название статьи">
           </div>
           <div class="col">
             <label for="editor" class="form-label">Текст статьи</label>
-            <textarea class="form-control" id="editor" rows="10"></textarea>
+            <textarea name="content" class="form-control" id="editor" rows="10"><?=$content?></textarea>
           </div>
           <div class="input-group col mb-4 mt-4">
-            <input type="file" class="form-control" id="upload">
+            <input name="img" type="file" class="form-control" id="upload">
             <label class="input-group-text" for="upload">Upload</label>
           </div>
-          <select class="form-select mb-4" aria-label="select">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select name="id_category" class="form-select mb-4" aria-label="select">
+            <option value="" selected>Выберете категорию</option>
+			  <?php foreach (getAllCategories() as $key => $category): ?>
+                <option value="<?=$category['id'];?>"><?=$category['name'];?></option>
+			  <?php endforeach; ?>
           </select>
+          <div class="mb-3 col-12 col-md-12 err">
+            <p><?=$msg;?></p>
+          </div>
           <div class="col-12 mb-4">
-            <button class="btn btn-primary" type="submit">Сохранить запись</button>
+            <button name="add_post"class="btn btn-primary" type="submit">Сохранить запись</button>
           </div>
         </form>
       </div>
